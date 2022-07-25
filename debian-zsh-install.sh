@@ -12,9 +12,6 @@ mkdir ~/packages/
 curl -L https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-musl_0.21.0_amd64.deb > ~/packages/bat.deb
 sudo dpkg -i ~/packages/bat.deb
 
-#? ugit install
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bhupesh-V/ugit/master/install)"
-
 #? personal zsh files install
 if ! (rg "zsh" ~/.bashrc) then
     echo "zsh" >> ~/.bashrc
