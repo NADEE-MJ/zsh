@@ -23,6 +23,11 @@
 | zdharma-continuum/fast-syntax-highlighting | nice syntax highlighting in shell                 |        yes         |                             |
 |                      hlissner/zsh-autopair | auto adds closing parens, quotes, etc..           |        yes         |                             |
 |          zsh-users/zsh-syntax-highlighting | nice syntax highlighting                          |         no         |                             |
+|                         ajeetdsouza/zoxide | better cd                                         |        yes         |              z              |
+|                             Bhupesh-V/ugit | undo git commands                                 |        yes         |            ugit             |
+|                                  ogham/exa | better ls                                         |        yes         |      ls, la, ll, etc.       |
+|                                sharkdp/bat | better cat                                        |        yes         |             bat             |
+|                         BurntSushi/ripgrep | better grep                                       |        yes         |             rg              |
 
 ## Useful Aliases
 
