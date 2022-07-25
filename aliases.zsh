@@ -25,6 +25,17 @@ alias bashrc="code ~/.bashrc"
 alias zshrc="code ~/.zshrc"
 alias aliases="code ~/.config/zsh/aliases.zsh"
 
+alias vi="vim"
+alias md="mkdir -p"
+alias rd=rmdir
+alias please=sudo
+
+#special cd commands
+alias ..="z .."
+alias back="z -"
+alias home="z ~"
+alias trash="z ~/.local/share/Trash/files"
+
 #open specific folder workspaces
 alias zshcode="code ~/.config/zsh"
 
@@ -59,16 +70,6 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 alias mkdir="mkdir -p"
 alias cp="cp -i"
 alias mv="mv -i"
-
-# shortcuts
-alias vi="vim"
-alias md="mkdir -p"
-alias rd=rmdir
-alias please=sudo
-alias ..="cd .."
-alias back="cd -"
-alias home="cd ~"
-alias trash="cd ~/.local/share/Trash/files"
 
 # better ls - uses exa
 alias ls='exa -Fgh --group-directories-first --git --icons --color always'                               # ls
