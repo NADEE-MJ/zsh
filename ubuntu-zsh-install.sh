@@ -1,12 +1,15 @@
 #!/bin/bash
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y
+sudo apt-get install locales python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y
 pip install psutil
 
 #? exa and zoxide setup
 cargo install exa
 cargo install zoxide --locked
+
+sudo locale-gen "en_US.UTF-8"
+sudo dpkg-reconfigure locales
 
 #? bat install
 mkdir ~/packages/
