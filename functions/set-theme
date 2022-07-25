@@ -1,0 +1,11 @@
+DIR="$HOME/.config/zsh"
+THEMEDIR="$DIR/p10kthemes"
+FILE="$DIR/p10kthemes/$CURRENT_P10K_THEME.zsh"
+
+if [[ ! -f $FILE ]] then
+    echo "that theme does not exist"
+else
+    rm -f $DIR/.p10k.zsh
+    bat "$FILE" >> $DIR/.p10k.zsh
+fi
+
