@@ -19,7 +19,6 @@
 |              zsh-users/zsh-autosuggestions | suggests previously run commands for rerunning    |        yes         |                             |
 |        joshskidmore/zsh-fzf-history-search | nicer history search                              |        yes         |           CTRL+r            |
 |               MenkeTechnologies/zsh-expand | expands aliases                                   |         no         |                             |
-|                     jessarcher/zsh-artisan | better completion for php artisan                 |        yes         |                             |
 | zdharma-continuum/fast-syntax-highlighting | nice syntax highlighting in shell                 |        yes         |                             |
 |                      hlissner/zsh-autopair | auto adds closing parens, quotes, etc..           |        yes         |                             |
 |          zsh-users/zsh-syntax-highlighting | nice syntax highlighting                          |         no         |                             |

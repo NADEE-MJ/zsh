@@ -27,9 +27,6 @@ repos=(
     joshskidmore/zsh-fzf-history-search
     # MenkeTechnologies/zsh-expand # cannot have both this and zsh-you-should-use enabled, pick one
 
-    #* php/artisan/laravel
-    jessarcher/zsh-artisan #!make sure this works
-
     #* formatting
     zdharma-continuum/fast-syntax-highlighting # pick this or zsh-syntax-highlighting
     hlissner/zsh-autopair
