@@ -116,8 +116,8 @@ alias p-server="./scripts/start_dev_server.sh"
 alias services=run-services
 
 #easy access to formatting tools
-alias js-f=js_format
-alias php-f=php_format
+alias js-f=js-format
+alias php-f=php-format
 
 #laravel commands
 alias worker="sudo php artisan queue:work --tries=3 --timeout=3600  --rest=0.5 --sleep=5 --queue=high,default,low"
