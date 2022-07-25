@@ -1,11 +1,12 @@
 #!/bin/bash
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf zoxide -y
+sudo apt-get install python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y
 pip install psutil
 
-#? exa setup
+#? exa and zoxide setup
 cargo install exa
+cargo install zoxide --locked
 
 #? bat install
 mkdir ~/packages/
