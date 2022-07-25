@@ -34,6 +34,7 @@ cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git
 cp $ZSHDIR/plugins/git-completion/git-completion.zsh $ZSHDIR/plugins-custom/_git
 
 zstyle ':completion:*:*:git:*' menu select script ~/.config/zsh/plugins-custom/git-completion.bash
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # allows for case insensitive completion
 fpath=($ZSHDIR/plugins-custom $fpath)
 autoload -Uz compinit && compinit
 

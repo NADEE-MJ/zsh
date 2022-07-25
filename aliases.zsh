@@ -16,6 +16,7 @@ alias tib="tig blame -C"
 
 #commands
 alias gc="git checkout"
+alias gad="git add -- ."
 
 #?###############################################
 #?shortcuts
@@ -83,6 +84,9 @@ alias la='exa -lbhHigUmuSa --group-directories-first --git --icons --time-style=
 alias lx='exa -lbhHigUmuSa@ --group-directories-first --git--icons --time-style=long-iso --color-scale'  # all + extended list
 alias lS='exa -1 --group-directories-first --git --icons'			                                     # one column, just names SPECIALTY VIEW
 alias lt='exa --tree --level=2 --group-directories-first --git --icons'                                  # tree SPECIALTY VIEW
+
+# better rg defaults
+alias rg="rg -i --no-ignore --hidden --no-ignore-dot"
 
 #?###############################################
 #?vs code

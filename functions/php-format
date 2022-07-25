@@ -1,4 +1,2 @@
-revolver start --style "dots4" start "Linting and Formatting PHP files"
 npx prettier --write $1
 php ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php $1
-revolver stop

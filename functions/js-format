@@ -1,4 +1,2 @@
-revolver start --style "dots4" start "Linting and Formatting JS files"
 npx prettier --write $1
 npx eslint --fix $1
-revolver stop
