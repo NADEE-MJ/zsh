@@ -42,9 +42,9 @@ set-theme
 source ~/.p10k.zsh
 
 # so that exa works
-echo $PATH | grep -q "$HOME/scripts"
+# echo $PATH | grep -q "$HOME/.cargo/bin"
 
-if [ $? -eq 0 ]; then
+if [[ ! $PATH == "$HOME/.cargo/bin" ]]; then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
