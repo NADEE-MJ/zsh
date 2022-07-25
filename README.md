@@ -28,6 +28,7 @@
 |                                  ogham/exa | better ls                                         |        yes         |      ls, la, ll, etc.       |
 |                                sharkdp/bat | better cat                                        |        yes         |             bat             |
 |                         BurntSushi/ripgrep | better grep                                       |        yes         |             rg              |
+|                      mattmc3/zsh_unplugged | very light zsh plugin manager                     |        yes         |                             |
 
 ## Useful Aliases
 
@@ -66,10 +67,10 @@
     please ==> ```sudo```
 
     special cds
-    .. ==> ```z ..```
-    back ==> ```z -```
-    home ==> ```z ```~
-    trash ==> ```z ~/.local/share/Trash/files```
+    .. ==> ```cd ..```
+    back ==> ```cd -```
+    home ==> ```cd ```~
+    trash ==> ```cd ~/.local/share/Trash/files```
 
     open specific folder workspaces
     zshcode ==> ```code ~/.config/zsh```
@@ -106,6 +107,9 @@
     mkdir ==> ```mkdir -p```
     cp ==> ```cp -i```
     mv ==> ```mv -i```
+
+    clean up trashcan
+    clean-trash ==> ```unsafe-rm -r -f ~/.local/share/Trash/files```
 
     better ls - uses exa
     ls ==> ```exa -Fgh --group-directories-first --git --icons --color always```

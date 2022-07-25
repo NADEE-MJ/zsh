@@ -31,10 +31,10 @@ alias rd=rmdir
 alias please=sudo
 
 #special cd commands
-alias ..="z .."
-alias back="z -"
-alias home="z ~"
-alias trash="z ~/.local/share/Trash/files"
+alias ..="cd .."
+alias back="cd -"
+alias home="cd ~"
+alias trash="cd ~/.local/share/Trash/files"
 
 #open specific folder workspaces
 alias zshcode="code ~/.config/zsh"
@@ -70,6 +70,9 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 alias mkdir="mkdir -p"
 alias cp="cp -i"
 alias mv="mv -i"
+
+# clean up trashcan
+alias clean-trash="unsafe-rm -r -f ~/.local/share/Trash/files"
 
 # better ls - uses exa
 alias ls='exa -Fgh --group-directories-first --git --icons --color always'                               # ls
