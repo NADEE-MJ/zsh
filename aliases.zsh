@@ -16,7 +16,6 @@ alias tib="tig blame -C"
 
 #commands
 alias gc="git checkout"
-alias gad="git add -- ."
 
 #?###############################################
 #?shortcuts
@@ -125,6 +124,7 @@ alias php-f=php-format
 
 #laravel commands
 alias worker="sudo php artisan queue:work --tries=3 --timeout=3600  --rest=0.5 --sleep=5 --queue=high,default,low"
+alias pa='php artisan'
 alias pamf="sudo php artisan migrate:fresh --seed"
 alias pat="php artisan test"
 alias patf="php artisan test --filter"
