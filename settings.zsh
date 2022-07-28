@@ -25,4 +25,4 @@ export LS_COLORS="*.zsh=38;5;14:*.jsx=38;5;9:*.js=38;5;9:*.php=38;5;82" # add fi
 export CURRENT_P10K_THEME='main'
 
 # set path to only partially delete on ctrl+backspace
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?.[]~=&;!#$%^(){}<>'

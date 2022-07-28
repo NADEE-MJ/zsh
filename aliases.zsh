@@ -125,9 +125,12 @@ alias php-f=php-format
 #laravel commands
 alias worker="sudo php artisan queue:work --tries=3 --timeout=3600  --rest=0.5 --sleep=5 --queue=high,default,low"
 alias pa='php artisan'
-alias pamf="sudo php artisan migrate:fresh --seed"
+alias pamfs="php artisan migrate:fresh --seed"
+alias pamf="php artisan migrate:fresh --seed"
+alias pam="php artisan migrate"
 alias pat="php artisan test"
 alias patf="php artisan test --filter"
+alias padbs="php artisan db:seed --class="
 
 #js commands
 alias nrp="npm run prod"
