@@ -8,8 +8,9 @@ pip install psutil
 cargo install exa
 cargo install zoxide --locked
 
-sudo locale-gen "en_US.UTF-8"
-sudo dpkg-reconfigure locales
+sudo update-locale "LANG=en_US.UTF-8"
+sudo locale-gen --purge "en_US.UTF-8"
+sudo dpkg-reconfigure --frontend noninterative locales
 
 #? bat install
 mkdir ~/packages/
