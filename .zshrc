@@ -42,10 +42,10 @@ autoload -Uz compinit && compinit
 set-theme
 source ~/.p10k.zsh
 
-# install ugit
-if ! type ugit > /dev/null; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bhupesh-V/ugit/master/install)"
-fi
+# # install ugit
+# if ! type ugit > /dev/null; then
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bhupesh-V/ugit/master/install)"
+# fi
 
 # so that exa works
 if [[ ! $PATH == "$HOME/.cargo/bin" ]]; then

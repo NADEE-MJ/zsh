@@ -19,7 +19,7 @@ repos=(
 
     #* git
     felipec/git-completion
-    wfxr/forgit
+    # wfxr/forgit
 
     #* completions
     #zsh-users/zsh-completions #? seems unneccesary
