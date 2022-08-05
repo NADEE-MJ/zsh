@@ -37,7 +37,7 @@ alias home="cd ~"
 alias trash="cd ~/.local/share/Trash/files"
 
 #open specific folder workspaces
-alias zshcode="code ~/.config/zsh"
+alias zshcode="code ~/.config/zsh/zsh.code-workspace"
 
 #reload zsh config
 alias ez="exec zsh"
