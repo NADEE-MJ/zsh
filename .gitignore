@@ -1,2 +1,3 @@
 plugins/
 .p10k.zsh
+overrides.zsh

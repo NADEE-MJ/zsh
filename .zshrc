@@ -18,6 +18,10 @@ source "$ZSHDIR/plugins.zsh"
 source "$ZSHDIR/aliases.zsh"
 source "$ZSHDIR/settings.zsh"
 
+if [[ -f $ZSHDIR/overrides.zsh ]]; then
+    source "$ZSHDIR/overrides.zsh"
+fi
+
 plugin-load $repos
 
 #set to true to update all plugins on zsh startup
