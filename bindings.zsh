@@ -24,3 +24,6 @@ bindkey "^[OA" up-line-or-beginning-search # UP
 bindkey "^[[A" up-line-or-beginning-search # UP
 bindkey "^[OB" down-line-or-beginning-search # DOWN
 bindkey "^[[B" down-line-or-beginning-search # DOWN
+
+#fzf search
+bindkey "^R" fzf-history-widget
