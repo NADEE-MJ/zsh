@@ -6,6 +6,6 @@ if [[ ! -f $FILE ]] then
     echo "that theme does not exist"
 else
     rm -f $DIR/.p10k.zsh
-    bat "$FILE" >> $DIR/.p10k.zsh
+    batcat "$FILE" >> $DIR/.p10k.zsh
 fi
 

@@ -29,6 +29,7 @@ alias vi="vim"
 alias md="mkdir -p"
 alias rd=rmdir
 alias please=sudo
+alias bat=batcat
 
 #special cd commands
 alias ..="cd .."
@@ -75,14 +76,14 @@ alias mv="mv -i"
 alias clean-trash="unsafe-rm -r -f ~/.local/share/Trash/files"
 
 # better ls - uses exa
-alias ls='exa -Fgh --group-directories-first --git --icons --color always'                               # ls
-alias l='exa -lbF --group-directories-first --git --icons'                                               # list, size, type, git
-alias ll='exa -lbGF --group-directories-first --git --icons'                                             # long list
-alias llm='exa -lbGF --group-directories-first --git --icons --sort=modified'                            # long list, modified date sort
-alias la='exa -lbhHigUmuSa --group-directories-first --git --icons --time-style=long-iso --color-scale'  # all list
-alias lx='exa -lbhHigUmuSa@ --group-directories-first --git--icons --time-style=long-iso --color-scale'  # all + extended list
-alias lS='exa -1 --group-directories-first --git --icons'			                                     # one column, just names SPECIALTY VIEW
-alias lt='exa --tree --level=2 --group-directories-first --git --icons'                                  # tree SPECIALTY VIEW
+alias ls='exa -Fgh --group-directories-first  --icons --color always'                               # ls
+alias l='exa -lbF --group-directories-first  --icons'                                               # list, size, type, git
+alias ll='exa -lbGF --group-directories-first  --icons'                                             # long list
+alias llm='exa -lbGF --group-directories-first  --icons --sort=modified'                            # long list, modified date sort
+alias la='exa -lbhHigUmuSa --group-directories-first  --icons --time-style=long-iso --color-scale'  # all list
+alias lx='exa -lbhHigUmuSa@ --group-directories-first --icons --time-style=long-iso --color-scale'  # all + extended list
+alias lS='exa -1 --group-directories-first  --icons'			                                     # one column, just names SPECIALTY VIEW
+alias lt='exa --tree --level=2 --group-directories-first  --icons'                                  # tree SPECIALTY VIEW
 
 # better rg defaults
 alias rg="rg -i --no-ignore --hidden --no-ignore-dot"
