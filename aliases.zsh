@@ -137,3 +137,7 @@ alias padbs="php artisan db:seed --class="
 alias nrp="npm run prod"
 alias nrd="npm run dev"
 alias nrw="npm run watch"
+alias nil="npm install --legacy-peer-deps"
+
+#install dependencies
+alias prep="composer install && npm install --legacy-peer-deps && npx husky install && npm run dev"
