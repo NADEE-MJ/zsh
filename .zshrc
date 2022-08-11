@@ -34,6 +34,7 @@ fi
 rm -f $ZSHDIR/plugins-custom/git-completion.bash
 rm -f $ZSHDIR/plugins-custom/_git
 
+mkdir $ZSHDIR/plugins-custom
 cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git-completion.bash
 cp $ZSHDIR/plugins/git-completion/git-completion.zsh $ZSHDIR/plugins-custom/_git
 
