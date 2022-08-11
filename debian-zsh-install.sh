@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf zoxide exa bat -y
+sudo apt-get install vim wget git curl python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf zoxide exa bat -y
 pip install psutil
 
 #? personal zsh files install
