@@ -22,6 +22,8 @@ if [[ -f $ZSHDIR/overrides.zsh ]]; then
     source "$ZSHDIR/overrides.zsh"
 fi
 
+mkdir ~/.local/share/Trash/files
+
 plugin-load $repos
 
 #set to true to update all plugins on zsh startup
@@ -31,8 +33,8 @@ if ($UPDATE_PLUGINS) then
 fi
 
 # update git completions
-rm -f $ZSHDIR/plugins-custom/git-completion.bash
-rm -f $ZSHDIR/plugins-custom/_git
+/bin/rm -f $ZSHDIR/plugins-custom/git-completion.bash
+/bin/rm -f $ZSHDIR/plugins-custom/_git
 
 mkdir $ZSHDIR/plugins-custom
 cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git-completion.bash
@@ -46,11 +48,6 @@ autoload -Uz compinit && compinit
 # initialize powerlevel10k theme
 set-theme
 source ~/.p10k.zsh
-
-# # install ugit
-# if ! type ugit > /dev/null; then
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Bhupesh-V/ugit/master/install)"
-# fi
 
 # so that exa works
 if [[ ! $PATH == "$HOME/.cargo/bin" ]]; then
