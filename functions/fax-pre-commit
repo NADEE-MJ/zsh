@@ -1,0 +1,1 @@
+sh ~/repos/fax_server/.git/hooks/pre-commit
