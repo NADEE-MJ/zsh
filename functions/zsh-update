@@ -1,0 +1,3 @@
+ZSHDIR=$HOME/.config/zsh/
+command git -C $ZSHDIR pull --ff --recurse-submodules --depth 1 --rebase --autostash
+zsh-update-plugins

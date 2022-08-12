@@ -44,8 +44,6 @@ alias zshcode="code ~/.config/zsh/zsh.code-workspace"
 alias ez="exec zsh"
 alias reload="exec zsh"
 
-alias zsh-update-plugins="zsh-unplugged-update"
-
 #?###############################################
 #?tools
 #?###############################################
