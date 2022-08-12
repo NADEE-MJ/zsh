@@ -8,9 +8,9 @@ pip install psutil
 cargo install exa
 cargo install zoxide --locked
 
-sudo update-locale "LANG=en_US.UTF-8"
-sudo locale-gen --purge "en_US.UTF-8"
 sudo dpkg-reconfigure --frontend noninterative locales
+sudo locale-gen --purge "en_US.UTF-8"
+sudo update-locale "LANG=en_US.UTF-8"
 
 #? personal zsh files install
 if ! (rg "zsh" ~/.bashrc) then
