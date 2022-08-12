@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install locales python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf bat -y
+sudo apt-get install locales python3.10 python-is-python3 python3-pip vim wget git curl zsh cargo ripgrep dnsutils net-tools tig fzf bat -y
 pip install psutil
 
 #? exa and zoxide setup
