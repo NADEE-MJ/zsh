@@ -54,5 +54,8 @@ if [[ ! $PATH == "$HOME/.cargo/bin" ]]; then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
+# so that cowsay works
+export PATH="$PATH:/usr/games/"
+
 # initialize zoxide
 eval "$(zoxide init zsh)"
