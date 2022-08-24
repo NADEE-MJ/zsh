@@ -15,7 +15,21 @@ alias til="tig log"
 alias tib="tig blame -C"
 
 #commands
-alias gc="git checkout"
+alias gco="git checkout"
+alias gcd="git checkout develop"
+alias gl="git pull"
+alias gp="git push"
+alias gs="git stash -u"
+alias gsl="git stash list"
+alias gsp="git stash pop"
+alias gc="git commit -m"
+alias ga="git add ."
+alias gm="git merge"
+alias gmd="git merge develop"
+alias gr="git rebase"
+alias grd="git rebase develop"
+alias gb="git branch"
+alias gd="git diff"
 
 #?###############################################
 #?shortcuts
