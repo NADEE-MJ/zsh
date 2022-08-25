@@ -16,6 +16,7 @@ alias tib="tig blame -C"
 
 #commands
 alias gco="git checkout"
+alias gcb="git checkout -b"
 alias gcd="git checkout develop"
 alias gl="git pull"
 alias gp="git push"
