@@ -39,6 +39,7 @@ alias gd="git diff"
 alias bashrc="code ~/.bashrc"
 alias zshrc="code ~/.zshrc"
 alias aliases="code ~/.config/zsh/aliases.zsh"
+alias tldr='python3 -m tldr'
 
 alias vi="vim"
 alias md="mkdir -p"
