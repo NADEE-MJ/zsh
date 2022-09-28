@@ -133,6 +133,9 @@ alias p-server="./scripts/start_dev_server.sh"
 #restart important services on docker container
 alias services=run-services
 
+#composer
+alias ci="composer install"
+
 #easy access to formatting tools
 alias js-f=js-format
 alias php-f=php-format
