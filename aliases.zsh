@@ -151,6 +151,7 @@ alias patf="php artisan test --filter"
 alias padbs="php artisan db:seed --class="
 
 #js commands
+alias prep="npm run prep"
 alias nrp="npm run prod"
 alias nrd="npm run dev"
 alias nrw="npm run watch"
