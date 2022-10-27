@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install locales python3.10 python-is-python3 python3-pip vim wget git curl zsh cargo ripgrep dnsutils net-tools tig fzf -y
+sudo apt-get install locales python3.10 python-is-python3 python3-pip vim wget git curl zsh ripgrep dnsutils net-tools tig fzf unzip -y
 pip install psutil
 
 sudo dpkg-reconfigure --frontend noninterative locales
@@ -9,8 +9,11 @@ sudo locale-gen --purge "en_US.UTF-8"
 sudo update-locale "LANG=en_US.UTF-8"
 
 #? exa and zoxide setup
-cargo install exa
-cargo install zoxide
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+
+curl -L https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip > ~/packages/exa.zip
+unzip ~/packages/exa.zip -d ~/packages/exa
+sudo cp ~/packages/exa/bin/exa /usr/bin/exa
 
 #? bat install
 mkdir ~/packages/
