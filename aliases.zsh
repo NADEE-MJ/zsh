@@ -44,7 +44,7 @@ alias tldr='python3 -m tldr'
 alias vi="vim"
 alias md="mkdir -p"
 alias rd=rmdir
-alias please=sudo
+alias please="sudo apt"
 alias bat=batcat
 
 #special cd commands
@@ -151,11 +151,15 @@ alias patf="php artisan test --filter"
 alias padbs="php artisan db:seed --class="
 
 #js commands
-alias prep="npm run prep"
 alias nrp="npm run prod"
 alias nrd="npm run dev"
 alias nrw="npm run watch"
 alias nil="npm install --legacy-peer-deps"
 
 #install dependencies
+alias poop="sudo apt install lolcat cowsay figlet -y"
 alias prep="~/ci2portal/bin/post-checkout.sh"
+alias prepl="prep | lolcat"
+
+#cowsay
+alias gnusay="cowasy -f gnu"
