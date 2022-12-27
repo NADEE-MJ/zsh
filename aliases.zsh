@@ -43,12 +43,16 @@ alias tldr='python3 -m tldr'
 
 alias vi="vim"
 alias md="mkdir -p"
-alias rd=rmdir
+alias rd="rm -r"
 alias please="sudo apt"
 alias bat=batcat
 
 #special cd commands
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 alias back="cd -"
 alias home="cd ~"
 alias trash="cd ~/.local/share/Trash/files"
@@ -58,6 +62,7 @@ alias zshcode="code ~/.config/zsh/zsh.code-workspace"
 
 #reload zsh config
 alias ez="exec zsh"
+alias ezpz="exec zsh"
 alias reload="exec zsh"
 
 #?###############################################
@@ -79,7 +84,12 @@ alias quit="exit"
 # echo paths
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
-alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
+alias print-function='print -l ${(k)functions[(I)[^_]*]} | sort'
+
+# search
+alias find-alias='alias -r | fzf'
+alias find-function='print-function | fzf'
+alias find-path='print-path | fzf'
 
 # mask built-ins with better defaults
 alias mkdir="mkdir -p"
@@ -122,16 +132,10 @@ alias vscl="code --log"
 alias vscde="code --disable-extensions"
 
 #?###############################################
-#?fax_app
-#?###############################################
-alias f-server="dart pub global run dhttpd"
-alias p-server="./scripts/start_dev_server.sh"
-
-#?###############################################
 #?CI Solutions
 #?###############################################
 #restart important services on docker container
-alias services=run-services
+alias services=restart-services
 
 #composer
 alias ci="composer install"
@@ -144,26 +148,25 @@ alias php-f=php-format
 alias worker="sudo php artisan queue:work --tries=3 --timeout=3600  --rest=0.5 --sleep=5 --queue=high,default,low,notifications"
 alias pa='php artisan'
 alias pamfs="php artisan migrate:fresh --seed"
-alias pamf="php artisan migrate:fresh --seed"
+alias pamf="php artisan migrate:fresh"
 alias pam="php artisan migrate"
 alias pat="php artisan test"
 alias patf="php artisan test --filter"
 alias padbs="php artisan db:seed --class="
+alias padbsw="php artisan db:switch"
 
 #js commands
 alias nrp="npm run prod"
-alias nrd="npm run dev"
+alias nerd="npm run dev"
 alias nrw="npm run watch"
-alias nil="npm install --legacy-peer-deps"
+alias nci="npm ci --legacy-peer-deps"
+alias prep="npm run prep"
 
-#install dependencies
-alias poop="sudo apt install lolcat cowsay figlet -y"
-alias prep="~/ci2portal/bin/post-checkout.sh"
+#cowsay/lolcat/figlet
+alias add-crap="please install lolcat cowsay figlet -y"
+alias lol=lolcat
 alias prepl="prep | lolcat"
-
-#cowsay
 alias gnusay="cowsay -f gnu"
 alias gnusay="cowsay -f gnu"
 alias dragonsay="cowsay -f dragon"
 alias cocksay="cowsay -f cock"
-alias lol=lolcat

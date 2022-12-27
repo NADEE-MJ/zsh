@@ -8,7 +8,7 @@ repos=(
     mattmc3/zfunctions
 
     #* tools
-    MichaelAquilina/zsh-you-should-use # cannot have both this and zsh-you-should-use enabled, pick one
+    MichaelAquilina/zsh-you-should-use # cannot have both this and zsh-expand enabled, pick one
     zshzoo/cd-ls
     xvoland/Extract
     zsh-users/zsh-history-substring-search
@@ -19,7 +19,6 @@ repos=(
 
     #* git
     felipec/git-completion
-    # wfxr/forgit
 
     #* completions
     #zsh-users/zsh-completions #? seems unneccesary

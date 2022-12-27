@@ -1,3 +1,0 @@
-#needs to be run from fax_server repo
-poetry update
-poetry install
