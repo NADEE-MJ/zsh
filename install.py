@@ -9,7 +9,8 @@ DISTRO = getOutput(os.popen("awk -F= '/^NAME/{print $2}' /etc/os-release"))[0].r
 print(f'current distro: {DISTRO}')
 
 os.system('sudo apt-get update -y && sudo apt-get upgrade -y')
-os.system('sudo apt-get install vim wget git curl python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf bat -y')
+os.system('sudo apt-get install vim wget git curl micro python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y')
+os.system('sudo apt-get install cowsay figlet lolcat -y')
 os.system('pip install psutil')
 
 if DISTRO == 'Ubunutu':
@@ -30,8 +31,10 @@ if DISTRO == 'Ubunutu':
     os.system('mkdir ~/packages/')
     os.system('curl -L https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-musl_0.21.0_amd64.deb > ~/packages/bat.deb')
     os.system('sudo dpkg -i ~/packages/bat.deb')
+
 elif DISTRO == 'Debian GNU/Linux':
-    os.system('sudo apt install exa zoxide -y')
+    os.system('sudo apt install bat exa zoxide -y')
+
 else:
     print('not running custom install options')
 
