@@ -9,7 +9,7 @@ DISTRO = getOutput(os.popen("awk -F= '/^NAME/{print $2}' /etc/os-release"))[0].r
 print(f'current distro: {DISTRO}')
 
 os.system('sudo apt-get update -y && sudo apt-get upgrade -y')
-os.system('sudo apt-get install vim wget git curl micro python3.10 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y')
+os.system('sudo apt-get install vim wget git curl micro python3 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y')
 os.system('sudo apt-get install cowsay figlet lolcat -y')
 os.system('pip install psutil')
 
