@@ -162,4 +162,8 @@ alias prep="~/ci2portal/bin/post-checkout.sh"
 alias prepl="prep | lolcat"
 
 #cowsay
-alias gnusay="cowasy -f gnu"
+alias gnusay="cowsay -f gnu"
+alias gnusay="cowsay -f gnu"
+alias dragonsay="cowsay -f dragon"
+alias cocksay="cowsay -f cock"
+alias lol=lolcat
