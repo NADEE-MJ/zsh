@@ -158,4 +158,4 @@ alias nrw="npm run watch"
 alias nil="npm install --legacy-peer-deps"
 
 #install dependencies
-alias prep="composer install && npm install --legacy-peer-deps && npx husky install && npm run dev"
+alias prep="~/ci2portal/bin/post-checkout.sh"
