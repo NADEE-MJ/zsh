@@ -174,3 +174,6 @@ alias gnusay="cowsay -f gnu"
 alias gnusay="cowsay -f gnu"
 alias dragonsay="cowsay -f dragon"
 alias cocksay="cowsay -f cock"
+
+#alternate names
+alias flood='php artisan migrate:fresh --seed'
