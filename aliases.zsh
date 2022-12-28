@@ -63,8 +63,10 @@ alias zshcode="code ~/.config/zsh/zsh.code-workspace"
 
 #reload zsh config
 alias ez="exec zsh"
-alias ezpz="exec zsh"
 alias reload="exec zsh"
+
+#update and reload zsh
+alias ezpz="zsh-pull && exec zsh"
 
 #?###############################################
 #?tools
@@ -177,3 +179,5 @@ alias cocksay="cowsay -f cock"
 
 #alternate names
 alias flood='php artisan migrate:fresh --seed'
+alias gg='dragonsay "ggez get rekt" | lol'
+alias f='figlet f | lol'
