@@ -31,6 +31,7 @@ alias gr="git rebase"
 alias grd="git rebase develop"
 alias gb="git branch"
 alias gd="git diff"
+alias grst="git restore"
 
 #?###############################################
 #?shortcuts
@@ -134,6 +135,9 @@ alias vscde="code --disable-extensions"
 #?###############################################
 #?CI Solutions
 #?###############################################
+#tail logs
+alias t=tail-log
+
 #restart important services on docker container
 alias services=restart-services
 

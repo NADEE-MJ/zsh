@@ -1,0 +1,1 @@
+tail -f "/home/deploy/ci2portal/storage/logs/laravel-$1.log"
