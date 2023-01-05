@@ -46,7 +46,7 @@ alias vi="vim"
 alias md="mkdir -p"
 alias rd="rm -r"
 alias please="sudo apt"
-alias bat=batcat
+galias bat=batcat
 
 #special cd commands
 alias ..="cd .."
@@ -172,6 +172,7 @@ alias prep="npm run prep"
 alias add-crap="please install lolcat cowsay figlet -y"
 alias lol=lolcat
 alias prepl="prep | lolcat"
+alias narwhal="npm run watch | lolcat"
 alias gnusay="cowsay -f gnu"
 alias gnusay="cowsay -f gnu"
 alias dragonsay="cowsay -f dragon"
