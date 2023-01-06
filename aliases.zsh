@@ -46,7 +46,7 @@ alias vi="vim"
 alias md="mkdir -p"
 alias rd="rm -r"
 alias please="sudo apt"
-galias bat=batcat
+alias bat=batcat
 
 #special cd commands
 alias ..="cd .."
