@@ -13,7 +13,7 @@ os.system('sudo apt-get install vim wget git curl micro python3 python-is-python
 os.system('sudo apt-get install cowsay figlet lolcat -y')
 os.system('pip install psutil')
 
-if DISTRO == 'Ubunutu':
+if DISTRO == 'Ubuntu':
     os.system('sudo apt-get install locales unzip -y')
 
     os.system('sudo dpkg-reconfigure --frontend noninterative locales')
