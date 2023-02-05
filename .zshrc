@@ -46,7 +46,18 @@ fpath=($ZSHDIR/plugins-custom $fpath)
 autoload -Uz compinit && compinit
 
 # initialize powerlevel10k theme
-set-theme
+THEMEFILE="$ZSHDIR/p10kthemes/$CURRENT_P10K_THEME.zsh"
+
+if [[ ! -f $THEMEFILE ]] then
+    echo "that theme does not exist"
+else
+    P10K_FILE="$ZSHDIR/.p10k.zsh"
+    if [[ -f $P10K_FILE ]] then
+        rm -f $P10K_FILE
+    fi
+    cat "$THEMEFILE" >> $ZSHDIR/.p10k.zsh
+fi
+
 source ~/.p10k.zsh
 
 # so that exa works
