@@ -28,6 +28,6 @@ repos=(
 
     #* formatting
     zdharma-continuum/fast-syntax-highlighting # pick this or zsh-syntax-highlighting
-    hlissner/zsh-autopair
+    # hlissner/zsh-autopair
     # zsh-users/zsh-syntax-highlighting # pick this or fast-syntax-highlighting
 )
