@@ -15,7 +15,7 @@ unsetopt BEEP
 
 zle_highlight=('paste:none') #remove paste highlighting
 
-export YSU_HARDCORE=1 # force usage of aliases, to use baby mode set to 0
+export YSU_HARDCORE=0 # to force usage of aliases set to 1
 export YSU_IGNORED_ALIASES=("g" "ll") # ignore in YSU
 
 # 38;5;x replace x with number from https://www.ditig.com/256-colors-cheat-sheet
