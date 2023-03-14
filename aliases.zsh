@@ -2,6 +2,7 @@
 #?python
 #?###############################################
 alias py="python"
+alias py3="python3"
 
 #?###############################################
 #?git
@@ -42,7 +43,6 @@ alias gcd="git checkout develop"
 alias bashrc="code ~/.bashrc"
 alias zshrc="code ~/.zshrc"
 alias aliases="code ~/.config/zsh/aliases.zsh"
-alias tldr='python3 -m tldr' #give explanation of commands
 
 alias vi="vim"
 alias rd="rm -r"
