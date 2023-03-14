@@ -9,6 +9,7 @@ ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
   git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
 fi
+
 source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
 ZSHDIR="$HOME/.config/zsh"
@@ -22,25 +23,30 @@ if [[ -f $ZSHDIR/overrides.zsh ]]; then
     source "$ZSHDIR/overrides.zsh"
 fi
 
-mkdir ~/.local/share/Trash/files
+if [[ ! -d "~/.local/share/Trash/files" ]]; then
+  mkdir ~/.local/share/Trash/files
+fi
 
-plugin-load $repos
-
-#set to true to update all plugins on zsh startup
-UPDATE_PLUGINS=false
+#update zsh plugins and load
 if ($UPDATE_PLUGINS) then
     zsh-unplugged-update
 fi
+
+plugin-load $repos
 
 # update git completions
 /bin/rm -f $ZSHDIR/plugins-custom/git-completion.bash
 /bin/rm -f $ZSHDIR/plugins-custom/_git
 
-mkdir $ZSHDIR/plugins-custom
+if [[ ! -d $ZSHDIR/plugins-custom ]]; then
+  mkdir $ZSHDIR/plugins-custom
+fi
+
 cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git-completion.bash
 cp $ZSHDIR/plugins/git-completion/git-completion.zsh $ZSHDIR/plugins-custom/_git
 
 zstyle ':completion:*:*:git:*' menu select script ~/.config/zsh/plugins-custom/git-completion.bash
+
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # allows for case insensitive completion
 fpath=($ZSHDIR/plugins-custom $fpath)
 autoload -Uz compinit && compinit
@@ -60,12 +66,7 @@ fi
 
 source ~/.p10k.zsh
 
-# so that exa works
-if [[ ! $PATH == "$HOME/.cargo/bin" ]]; then
-  export PATH="$PATH:$HOME/.cargo/bin"
-fi
-
-# so that cowsay works
+# so that cowsay and other games work
 export PATH="$PATH:/usr/games/"
 
 # initialize zoxide

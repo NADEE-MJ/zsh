@@ -1,7 +1,7 @@
 #?###############################################
 #?python
 #?###############################################
-alias py="python3"
+alias py="python"
 
 #?###############################################
 #?git
@@ -17,7 +17,6 @@ alias tib="tig blame -C"
 #commands
 alias gco="git checkout"
 alias gcb="git checkout -b"
-alias gcd="git checkout develop"
 alias gl="git pull"
 alias gp="git push"
 alias gs="git stash -u"
@@ -26,12 +25,15 @@ alias gsp="git stash pop"
 alias gc="git commit -m"
 alias ga="git add ."
 alias gm="git merge"
-alias gmd="git merge develop"
 alias gr="git rebase"
-alias grd="git rebase develop"
 alias gb="git branch"
 alias gd="git diff"
 alias grst="git restore"
+
+#CI specific
+alias grd="git rebase develop"
+alias gmd="git merge develop"
+alias gcd="git checkout develop"
 
 #?###############################################
 #?shortcuts
@@ -40,13 +42,11 @@ alias grst="git restore"
 alias bashrc="code ~/.bashrc"
 alias zshrc="code ~/.zshrc"
 alias aliases="code ~/.config/zsh/aliases.zsh"
-alias tldr='python3 -m tldr'
+alias tldr='python3 -m tldr' #give explanation of commands
 
 alias vi="vim"
-alias md="mkdir -p"
 alias rd="rm -r"
-alias please="sudo apt"
-alias bat=batcat
+alias please="sudo"
 
 #special cd commands
 alias ..="cd .."
@@ -74,8 +74,6 @@ alias ezpz="zsh-pull && exec zsh"
 #can extract from any archive type
 alias x=extract
 
-alias installed="apt list --installed | fzf"
-
 # network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias iplocal="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
@@ -102,15 +100,15 @@ alias mv="mv -i"
 # clean up trashcan
 alias clean-trash="unsafe-rm -r -f ~/.local/share/Trash/files"
 
-# better ls - uses exa
-alias ls='exa -Fgh --group-directories-first  --icons --color always'                               # ls
-alias l='exa -lbF --group-directories-first  --icons'                                               # list, size, type, git
-alias ll='exa -lbGF --group-directories-first  --icons'                                             # long list
-alias llm='exa -lbGF --group-directories-first  --icons --sort=modified'                            # long list, modified date sort
-alias la='exa -lbhHigUmuSa --group-directories-first  --icons --time-style=long-iso --color-scale'  # all list
-alias lx='exa -lbhHigUmuSa@ --group-directories-first --icons --time-style=long-iso --color-scale'  # all + extended list
-alias lS='exa -1 --group-directories-first  --icons'			                                     # one column, just names SPECIALTY VIEW
-alias lt='exa --tree --level=2 --group-directories-first  --icons'                                  # tree SPECIALTY VIEW
+# better ls
+alias ls='exa -Fgh --group-directories-first  --icons --color always'
+alias lsm='ls --sort=modified'
+alias la='ls -la'
+alias lam='la --soft=modified'
+# displays way more info than ls
+alias lx='exa -lbhHigUmuSa@ --group-directories-first --icons --time-style=long-iso --color-scale'
+# ls in a tree view
+alias lt='exa --tree --level=2 --group-directories-first  --icons'
 
 # better rg defaults
 alias rg="rg -i --no-ignore --hidden --no-ignore-dot"
@@ -137,21 +135,19 @@ alias vscde="code --disable-extensions"
 #?###############################################
 #?CI Solutions
 #?###############################################
-#tail logs
-alias t=tail-log
-
 #restart important services on docker container
 alias services=restart-services
 
-#composer
+#package managers
 alias ci="composer install"
+alias ni="npm install"
 
 #easy access to formatting tools
 alias js-f=js-format
 alias php-f=php-format
 
 #laravel commands
-alias worker="sudo php artisan queue:work --tries=3 --timeout=3600 --sleep=1 --queue=high,default,low,notifications"
+alias worker="sudo php artisan queue:work --tries=3 --timeout=3600 --queue=high,default,low,notifications"
 alias pa='php artisan'
 alias pamfs="php artisan migrate:fresh --seed"
 alias pamf="php artisan migrate:fresh"
@@ -168,22 +164,29 @@ alias nrw="npm run watch"
 alias nci="npm ci --legacy-peer-deps"
 alias prep="npm run prep"
 
+#Fun
+alias prepl="prep | lolcat"
+alias narwhal="npm run watch | lolcat"
+alias flood='php artisan migrate:fresh --seed'
+
+#?###############################################
+#?Other
+#?###############################################
 #cowsay/lolcat/figlet
 alias add-crap="please install lolcat cowsay figlet -y"
 alias lol=lolcat
-alias prepl="prep | lolcat"
-alias narwhal="npm run watch | lolcat"
 alias gnusay="cowsay -f gnu"
 alias gnusay="cowsay -f gnu"
 alias dragonsay="cowsay -f dragon"
 alias cocksay="cowsay -f cock"
 
 #alternate names
-alias flood='php artisan migrate:fresh --seed'
 alias gg='dragonsay "ggez get rekt" | lol'
 alias f='figlet f | lol'
 
-#challenger
+#?###############################################
+#?Challenger / Peppermint
+#?###############################################
 alias pr='poetry run'
 alias prc='poetry run container'
 alias prcs='poetry run container start'
