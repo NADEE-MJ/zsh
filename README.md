@@ -14,7 +14,7 @@
 |                        mattmc3/zsh-safe-rm | stops you from making wrong moves with rm         |           rm           |
 |                          romkatv/zsh-defer | defer plugin startup                              |                        |
 |                     felipec/git-completion | better git completion                             |       git etc..        |
-|                  zsh-users/zsh-completions | more zsh completions                              |           no           |  |
+|                  zsh-users/zsh-completions | more zsh completions                              |                        |
 |              zsh-users/zsh-autosuggestions | suggests previously run commands for rerunning    |                        |
 |        joshskidmore/zsh-fzf-history-search | nicer history search                              |         CTRL+r         |
 | zdharma-continuum/fast-syntax-highlighting | nice syntax highlighting in shell                 |                        |
