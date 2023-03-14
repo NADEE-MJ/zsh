@@ -17,7 +17,7 @@ if args.distro == "debian12":
     install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
     install_extra_packages = "sudo apt install bat exa zoxide -y"
-    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh $$ printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
+    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "ubuntu20.04":
     update_packages = "sudo apt update && sudo apt upgrade -y"
     install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
@@ -27,7 +27,7 @@ elif args.distro == "ubuntu20.04":
     install_extra_packages = (
         f"sudo apt install bat -y && {exa_install} && {zoxide_install}"
     )
-    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh $$ printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
+    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "arch":
     update_packages = "sudo pacman -Syyu --noconfirm"
     install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf --noconfirm"
@@ -55,16 +55,16 @@ with open(f"{HOME}/.bashrc", "r") as file:
 
 # clone zsh repo to ~/.config/zsh
 if os.path.exists(f"{HOME}/.config/zsh"):
-    os.system(f"sudo rm -r {HOME}/.config/zsh/")
+    os.system(f"sudo rm -rf {HOME}/.config/zsh/")
 os.system(f"mkdir -p {HOME}/.config/zsh/")
 os.system(f"git clone --depth 1 https://github.com/NADEE-MJ/zsh.git {HOME}/.config/zsh")
 
 # symlink zsh files to users home folder
 if os.path.exists(f"{HOME}/.zshrc"):
-    os.system(f"rm {HOME}/.zshrc")
+    os.system(f"sudo rm -f {HOME}/.zshrc")
 os.system(f"ln -s {HOME}/.config/zsh/.zshrc {HOME}/.zshrc")
 if os.path.exists(f"{HOME}/.p10k.zsh"):
-    os.system(f"rm {HOME}/.p10k.zsh")
+    os.system(f"sudo rm -f {HOME}/.p10k.zsh")
 os.system(f"ln -s {HOME}/.config/zsh/.p10k.zsh {HOME}/.p10k.zsh")
 
 # add default overrides
