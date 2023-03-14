@@ -1,5 +1,19 @@
 # ZSH Config
 
+## Installation
+
+### Arch
+
+curl -L https://raw.github.com/NADEE-MJ/zsh/main/install.py --output install.py && python -m install.py arch && rm -f install.py
+
+### Debian12
+
+curl -L https://raw.github.com/NADEE-MJ/zsh/main/install.py --output install.py && python -m install.py debian12 && rm -f install.py
+
+### Ubuntu 20.04
+
+curl -L https://raw.github.com/NADEE-MJ/zsh/main/install.py --output install.py && python -m install.py ubuntu20.04 && rm -f install.py
+
 ## Plugins Included
 
 |                                     Plugin | Purpose                                           | Commands to Know About |

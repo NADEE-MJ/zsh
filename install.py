@@ -1,58 +1,75 @@
-#!/bin/python3
-
+import argparse
 import os
 
-def getOutput(osCommand):
-    return [item.strip() for item in osCommand]
+desc = "Install zsh config from NADEE-MJ/zsh"
+distro_help = (
+    "The linux distribution to install zsh on, options: [debian12, ubuntu20.04, arch]"
+)
+HOME = os.path.expanduser("~")
 
-DISTRO = getOutput(os.popen("awk -F= '/^NAME/{print $2}' /etc/os-release"))[0].replace('"', '')
-print(f'current distro: {DISTRO}')
+parser = argparse.ArgumentParser(description=desc)
+parser.add_argument("distro", type=str, help=distro_help)
+args = parser.parse_args()
 
-os.system('sudo apt-get update -y && sudo apt-get upgrade -y')
-os.system('sudo apt-get install vim wget git curl micro python3 python-is-python3 python3-pip zsh cargo ripgrep dnsutils net-tools tig fzf -y')
-os.system('sudo apt-get install cowsay figlet lolcat -y')
-os.system('pip install psutil')
-
-if DISTRO == 'Ubuntu':
-    os.system('sudo apt-get install locales unzip -y')
-
-    os.system('sudo dpkg-reconfigure --frontend noninterative locales')
-    os.system('sudo locale-gen --purge "en_US.UTF-8"')
-    os.system('sudo update-locale "LANG=en_US.UTF-8"')
-
-    #? exa and zoxide setup
-    os.system('curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash')
-
-    os.system('curl -L https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip > ~/packages/exa.zip')
-    os.system('unzip ~/packages/exa.zip -d ~/packages/exa')
-    os.system('sudo cp ~/packages/exa/bin/exa /usr/bin/exa')
-
-    #? bat install
-    os.system('mkdir ~/packages/')
-    os.system('curl -L https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-musl_0.21.0_amd64.deb > ~/packages/bat.deb')
-    os.system('sudo dpkg -i ~/packages/bat.deb')
-
-elif DISTRO == 'Debian GNU/Linux':
-    os.system('sudo apt install bat exa zoxide -y')
-
+default_overrides = None
+if args.distro == "debian12":
+    update_packages = "sudo apt update && sudo apt upgrade -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
+    install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
+    install_extra_packages = "sudo apt install bat exa zoxide -y"
+    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh $$ printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
+elif args.distro == "ubuntu20.04":
+    update_packages = "sudo apt update && sudo apt upgrade -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
+    install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
+    exa_install = 'sudo apt install unzip -y && EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po \'"tag_name": "v\K[0-9.]+\') && curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" && sudo unzip -q exa.zip bin/exa -d /usr/local && rm -rf exa.zip'
+    zoxide_install = "curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash"
+    install_extra_packages = (
+        f"sudo apt install bat -y && {exa_install} && {zoxide_install}"
+    )
+    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh $$ printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
+elif args.distro == "arch":
+    update_packages = "sudo pacman -Syyu --noconfirm"
+    install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf --noconfirm"
+    install_fun_packages = "sudo pacman -S cowsay figlet lolcat --noconfirm"
+    install_extra_packages = "sudo pacman -S bat exa zoxide --noconfirm"
 else:
-    print('not running custom install options')
+    print("Not a valid distro option!\n")
+    parser.print_help()
+    exit(0)
 
-HOME = os.path.expanduser('~')
-with open(f'{HOME}/.bashrc', 'r') as file:
-        content = file.read()
-        if 'zsh' not in content:
-            os.system('echo "zsh" >> ~/.bashrc')
+# install necessary packages per distro
+os.system(update_packages)
+os.system(install_packages)
+os.system(install_fun_packages)
+os.system(install_extra_packages)
 
-os.system('sudo rm -r ~/.config/zsh/')
-os.system('mkdir -p ~/.config/zsh/')
-os.system('git clone --depth 1 https://github.com/NADEE-MJ/zsh.git ~/.config/zsh')
+# add zsh to ~/.bashrc file
+# you can remove this and change default shell for user to zsh however this has been more
+# consistent in terms of usability. Otherwise you would have to copy all of the bashrc
+# contents over to the zshrc. This is a lot simpler
+with open(f"{HOME}/.bashrc", "r") as file:
+    content = file.read()
+    if "zsh" not in content:
+        os.system(f'echo "zsh" >> {HOME}/.bashrc')
 
-os.system('rm ~/.zshrc')
-os.system('ln -s ~/.config/zsh/.zshrc ~/.zshrc')
-os.system('rm ~/.p10k.zsh')
-os.system('ln -s ~/.config/zsh/.p10k.zsh ~/.p10k.zsh')
+# clone zsh repo to ~/.config/zsh
+if os.path.exists(f"{HOME}/.config/zsh"):
+    os.system(f"sudo rm -r {HOME}/.config/zsh/")
+os.system(f"mkdir -p {HOME}/.config/zsh/")
+os.system(f"git clone --depth 1 https://github.com/NADEE-MJ/zsh.git {HOME}/.config/zsh")
 
-os.system('exec zsh')
+# symlink zsh files to users home folder
+if os.path.exists(f"{HOME}/.zshrc"):
+    os.system(f"rm {HOME}/.zshrc")
+os.system(f"ln -s {HOME}/.config/zsh/.zshrc {HOME}/.zshrc")
+if os.path.exists(f"{HOME}/.p10k.zsh"):
+    os.system(f"rm {HOME}/.p10k.zsh")
+os.system(f"ln -s {HOME}/.config/zsh/.p10k.zsh {HOME}/.p10k.zsh")
 
+# add default overrides
+if default_overrides is not None:
+    os.system(default_overrides)
 
+# start zsh and start cloning plugins repos
+os.system("exec zsh")
