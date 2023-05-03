@@ -146,7 +146,7 @@ alias js-f=js-format
 alias php-f=php-format
 
 #laravel commands
-alias worker="sudo php artisan queue:work --tries=3 --timeout=3600 --queue=high,default,low,notifications"
+alias worker="php artisan queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications"
 alias pa='php artisan'
 alias pamfs="php artisan migrate:fresh --seed"
 alias pamf="php artisan migrate:fresh"
@@ -160,6 +160,7 @@ alias padbsw="php artisan db:switch"
 alias nrp="npm run prod"
 alias nerd="npm run dev"
 alias nrw="npm run watch"
+alias nrda="npm run docker-attach"
 alias nci="npm ci --legacy-peer-deps"
 alias prep="npm run prep"
 
