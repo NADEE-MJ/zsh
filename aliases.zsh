@@ -44,7 +44,6 @@ alias bashrc="code ~/.bashrc"
 alias zshrc="code ~/.zshrc"
 alias aliases="code ~/.config/zsh/aliases.zsh"
 
-alias vi="vim"
 alias rd="rm -r"
 alias please="sudo"
 
