@@ -35,6 +35,7 @@ alias grst="git restore"
 alias grd="git rebase develop"
 alias gmd="git merge develop"
 alias gcd="git checkout develop"
+alias gci="git checkout integration"
 
 #?###############################################
 #?shortcuts
