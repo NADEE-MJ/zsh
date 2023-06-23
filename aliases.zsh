@@ -30,6 +30,7 @@ alias gr="git rebase"
 alias gb="git branch"
 alias gd="git diff"
 alias grst="git restore"
+alias gcp="git cherry-pick"
 
 #CI specific
 alias grd="git rebase develop"
