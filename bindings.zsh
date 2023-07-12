@@ -2,8 +2,8 @@
 bindkey "^[[1;5C" forward-word # CTRL+RIGHT
 bindkey "^[[1;5D" backward-word # CTRL+LEFT
 bindkey "^[[3~" delete-char # DELETE
-bindkey "^[[forward-kill-word" kill-word # DELETE
-bindkey "^[[backward-kill-word" backward-kill-word # DELETE
+bindkey "^[[3;5~" kill-word # DELETE
+bindkey "^H" backward-kill-word # BACKSPACE
 
 # substring search, type in what to search for and substring will only display commands with that in it
 zle -N history-substring-search-up
