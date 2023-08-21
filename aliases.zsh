@@ -20,6 +20,7 @@ alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gl="git pull"
 alias gp="git push"
+alias gst="git status"
 alias gs="git stash -u"
 alias gsl="git stash list"
 alias gsp="git stash pop"
@@ -34,9 +35,8 @@ alias grst="git restore"
 alias gcp="git cherry-pick"
 
 #CI specific
-alias grd="git rebase develop"
-alias gmd="git merge develop"
-alias gcd="git checkout develop"
+alias gri="git rebase integration"
+alias gmi="git merge integration"
 alias gci="git checkout integration"
 
 #?###############################################
@@ -136,9 +136,6 @@ alias vscde="code --disable-extensions"
 #?###############################################
 #?CI Solutions
 #?###############################################
-#restart important services on docker container
-alias services=restart-services
-
 #package managers
 alias ci="composer install"
 alias ni="npm install"
@@ -148,15 +145,23 @@ alias js-f=js-format
 alias php-f=php-format
 
 #laravel commands
-alias worker="php artisan queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications,default,pusher"
 alias pa='php artisan'
+alias paa='php artisan about'
+alias worker="php artisan queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications,default,pusher,output_records_and_images,high,low"
+alias pah="php artisan horizon"
+alias pahs="php artisan horizon:status"
+alias pahc="php artisan horizon:clear --queues"
 alias pamfs="php artisan migrate:fresh --seed"
 alias pamf="php artisan migrate:fresh"
 alias pam="php artisan migrate"
+alias pao="php artisan optimize"
+alias paoc="php artisan optimize:clear"
+alias pacc="php artisan config:cache"
+alias paccl="php artisan config:clear"
 alias pat="php artisan test"
 alias patf="php artisan test --filter"
 alias padbs="php artisan db:seed --class="
-alias padbsw="php artisan db:switch"
+alias pasr="php artisan schedule:run"
 
 #js commands
 alias nrp="npm run prod"
@@ -175,9 +180,7 @@ alias flood='php artisan migrate:fresh --seed'
 #?Other
 #?###############################################
 #cowsay/lolcat/figlet
-alias add-crap="please install lolcat cowsay figlet -y"
 alias lol=lolcat
-alias gnusay="cowsay -f gnu"
 alias gnusay="cowsay -f gnu"
 alias dragonsay="cowsay -f dragon"
 alias cocksay="cowsay -f cock"

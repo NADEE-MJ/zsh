@@ -1,5 +1,0 @@
-sudo service nginx restart
-sudo service php8.1-fpm stop
-sudo service php8.1-fpm start
-sudo service ssh restart
-sudo service mysql restart
