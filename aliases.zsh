@@ -147,33 +147,34 @@ alias php-f=php-format
 #laravel commands
 alias pa='php artisan'
 alias paa='pa about'
-alias worker="php artisan queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications,default,pusher,output_records_and_images,high,low"
-alias pah="php artisan horizon"
-alias pahs="php artisan horizon:status"
-alias pahc="php artisan horizon:clear --queues"
-alias pamfs="php artisan migrate:fresh --seed"
-alias pamf="php artisan migrate:fresh"
-alias pam="php artisan migrate"
-alias pao="php artisan optimize"
-alias paoc="php artisan optimize:clear"
-alias pacc="php artisan config:cache"
-alias paccl="php artisan config:clear"
-alias pat="php artisan test"
-alias patf="php artisan test --filter"
-alias padbs="php artisan db:seed --class="
-alias pasr="php artisan schedule:run"
+alias worker="pa queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications,default,pusher,output_records_and_images,high,low"
+alias pah="pa horizon"
+alias pahs="pa horizon:status"
+alias pahc="pa horizon:clear --queues"
+alias pamfs="pa migrate:fresh --seed"
+alias pamf="pa migrate:fresh"
+alias pam="pa migrate"
+alias pao="pa optimize"
+alias paoc="pa optimize:clear"
+alias pacc="pa config:cache"
+alias paccl="pa config:clear"
+alias pat="pa test"
+alias patf="pa test --filter"
+alias padbs="pa db:seed --class="
+alias pasr="pa schedule:run"
 
 #js commands
-alias nrp="npm run prod"
-alias nerd="npm run dev"
-alias nrw="npm run watch"
-alias nrda="npm run docker-attach"
+alias nr="npm run"
+alias nrp="nr prod"
+alias nerd="nr dev"
+alias nrw="nr watch"
+alias nrda="nr docker-attach"
 alias nci="npm ci --legacy-peer-deps"
-alias prep="npm run prep"
+alias prep="nr prep"
 
 #Fun
 alias prepl="prep | lolcat"
-alias narwhal="npm run watch | lolcat"
+alias narwhal="nr watch | lolcat"
 alias flood='php artisan migrate:fresh --seed'
 
 #?###############################################
@@ -193,24 +194,24 @@ alias f='figlet f | lol'
 #?Challenger / Peppermint
 #?###############################################
 alias pr='poetry run'
-alias prc='poetry run container'
-alias prcs='poetry run container start'
-alias prcss='poetry run container stop'
-alias prca='poetry run container attach'
-alias prl='poetry run lint'
-alias prlf='poetry run lint filter'
-alias prla='poetry run lint all'
-alias prm='poetry run migrate'
-alias prmc='poetry run migrate create'
-alias prmf='poetry run migrate fresh'
-alias prmfs='poetry run migrate fresh --seed'
-alias prmu='poetry run migrate up'
-alias prmd='poetry run migrate down'
-alias prs='poetry run server'
-alias prss='poetry run server start'
-alias prsss='poetry run server stop'
-alias prsf='poetry run server fast'
-alias prsk='poetry run server kit'
-alias prt='poetry run test'
-alias prta='poetry run test all'
-alias prtf='poetry run test filter'
+alias prc='pr container'
+alias prcs='pr container start'
+alias prcss='pr container stop'
+alias prca='pr container attach'
+alias prl='pr lint'
+alias prlf='pr lint filter'
+alias prla='pr lint all'
+alias prm='pr migrate'
+alias prmc='pr migrate create'
+alias prmf='pr migrate fresh'
+alias prmfs='pr migrate fresh --seed'
+alias prmu='pr migrate up'
+alias prmd='pr migrate down'
+alias prs='pr server'
+alias prss='pr server start'
+alias prsss='pr server stop'
+alias prsf='pr server fast'
+alias prsk='pr server kit'
+alias prt='pr test'
+alias prta='pr test all'
+alias prtf='pr test filter'
