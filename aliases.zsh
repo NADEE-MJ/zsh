@@ -146,7 +146,7 @@ alias php-f=php-format
 
 #laravel commands
 alias pa='php artisan'
-alias paa='php artisan about'
+alias paa='pa about'
 alias worker="php artisan queue:work --tries=3 --timeout=3600 --queue=input_records,input_photos,output_records,output_photos,notifications,default,pusher,output_records_and_images,high,low"
 alias pah="php artisan horizon"
 alias pahs="php artisan horizon:status"
