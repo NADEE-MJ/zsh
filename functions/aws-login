@@ -1,0 +1,91 @@
+#!/bin/bash
+set -e #set -ex
+
+#?############################################
+#? Docker Setup for CI Badge Application
+#?############################################
+#?
+#? · Performs login to AWS (with MFA if setup)
+#? · Creates AWS temporary access token
+#? · Exports token to ENV to use the aws cli
+#?
+
+AWS_CONFIG_FILE=~/.aws/config
+AWS_CREDS_FILE=~/.aws/credentials
+missingAWSEnvs=$(! [[ ( -z "$AWS_ACCESS_KEY_ID" ) || ( -z "$AWS_SECRET_ACCESS_KEY" ) || ( -z "$AWS_DEFAULT_REGION" ) ]]; echo $?)
+missingAWSCLISetup=$(! [ ! -f $AWS_CONFIG_FILE ] || [ ! -f $AWS_CREDS_FILE ]; echo $?)
+
+main() {
+  printf "⚙️  Setup Login for AWS CLI\n"
+
+  printf "    ⇨ logging into AWS...\n"
+  loginToAws
+
+}
+
+# ------------------------------------------------------------------------------
+loginToAws() {
+    printf "    ⇨ checking for AWS credentials\n"
+    if [ "$missingAWSEnvs" = 1 ] && [ "$missingAWSCLISetup" = 1 ]
+    then
+      printf "\n⚠️  Your AWS credentials are missing! \nInstall the AWS CLI first and run '\$aws configure'\n"
+
+      echo "You can also supply your AWS credentials by setting AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_DEFAULT_REGION in your profile."
+      echo "Refer to this link for more info: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html"
+      exit 1
+    fi
+
+    # Get MFA Device Serial
+    printf "    ⇨ getting AWS MFA device serial... "
+    AWS_MFA_SERIAL=$(getAwsMfaSerial)
+    printf "%s \n\n" "${AWS_MFA_SERIAL:-"none"}"
+
+    # Login to AWS and get temporary auth token
+    if [ -n "$AWS_MFA_SERIAL" ]; then read -p "    Enter AWS MFA Code from your device: " MFA_CODE; fi
+    printf "    ⇨ fetching temporary AWS credentials\n"
+    AWS_SESSION_INFO=$(getAwsSessionToken "$AWS_MFA_SERIAL" "$MFA_CODE")
+
+    # Export temporary security credentials
+    exportTemporarySecurityCredentials "$AWS_SESSION_INFO"
+    printf "    ⇨ Logged into AWS CLI with MFA\n"
+}
+
+exportTemporarySecurityCredentials() {
+  AWS_SESSION_INFO=$1
+  export AWS_ACCESS_KEY_ID
+  export AWS_SECRET_ACCESS_KEY
+  export AWS_DEFAULT_REGION
+  export AWS_SESSION_TOKEN
+
+  AWS_ACCESS_KEY_ID=$(echo "${AWS_SESSION_INFO}" | jq -r .Credentials.AccessKeyId)
+  AWS_SECRET_ACCESS_KEY=$(echo "${AWS_SESSION_INFO}" | jq -r .Credentials.SecretAccessKey)
+  AWS_DEFAULT_REGION=$(getDefaultRegion)
+  AWS_SESSION_TOKEN=$(echo "${AWS_SESSION_INFO}" | jq -r .Credentials.SessionToken)
+}
+
+getDefaultRegion() {
+  if [ "$missingAWSEnvs" = 1 ]
+  then
+    sed -n -e 's/^region = //p' $AWS_CONFIG_FILE | head -1
+  else
+    echo "$AWS_DEFAULT_REGION"
+  fi
+}
+
+getAwsMfaSerial() {
+  mfaSerial=$(aws iam list-mfa-devices 2>/dev/null | jq ".MFADevices[0].SerialNumber" | tr -d '"')
+  if [ "${mfaSerial}" = "null" ]; then echo ""; else echo "$mfaSerial"; fi
+}
+
+getAwsSessionToken() {
+  mfaSerialNumber=$1
+  mfaCode=$2
+  if [ -z "$mfaSerialNumber" ] # mfaSerial is empty, not required to get token
+  then
+    aws sts get-session-token
+  else
+    aws sts get-session-token --serial-number "$mfaSerialNumber" --token-code "$mfaCode"
+  fi
+}
+
+main "$@"; exit $?
