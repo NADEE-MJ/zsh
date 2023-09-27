@@ -71,3 +71,6 @@ export PATH="$PATH:/usr/games/"
 
 # initialize zoxide
 eval "$(zoxide init zsh)"
+
+# initialize fuck
+eval $(thefuck --alias)
