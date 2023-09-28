@@ -14,13 +14,13 @@ args = parser.parse_args()
 default_overrides = None
 if args.distro == "debian12":
     update_packages = "sudo apt update && sudo apt upgrade -y"
-    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
     install_extra_packages = "sudo apt install bat exa zoxide -y"
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "ubuntu20.04":
     update_packages = "sudo apt update && sudo apt upgrade -y"
-    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
     exa_install = 'sudo apt install unzip -y && EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po \'"tag_name": "v\K[0-9.]+\') && curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip" && sudo unzip -q exa.zip bin/exa -d /usr/local && rm -rf exa.zip'
     zoxide_install = "curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash"
@@ -30,7 +30,7 @@ elif args.distro == "ubuntu20.04":
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "arch":
     update_packages = "sudo pacman -Syyu --noconfirm"
-    install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf --noconfirm"
+    install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf jq bc --noconfirm"
     install_fun_packages = "sudo pacman -S cowsay figlet lolcat --noconfirm"
     install_extra_packages = "sudo pacman -S bat exa zoxide --noconfirm"
 else:
