@@ -19,7 +19,7 @@ fi
 
 # Check if file exists
 if [[ ! -f "$JSON_FILE" ]]; then
-    echo "File does not exist at the specified path."
+    echo "File does not exist at the specified path $JSON_FILE"
     return 1
 fi
 
