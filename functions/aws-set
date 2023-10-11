@@ -1,27 +1,26 @@
 # Check if jq is installed
 if ! command -v jq &> /dev/null; then
     echo "jq is not installed. Please install it first."
-    exit 1
+    return 1
 fi
 
 # Check if a file path is provided
 if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 /path/to/credentials.json"
-    exit 1
+    JSON_FILE="$(pwd)/.temp_aws_credentials.json"
+else
+    JSON_FILE="$1"
 fi
-
-JSON_FILE="$1"
 
 # Ensure the path is absolute
 if [[ ! "$JSON_FILE" = /* ]]; then
     echo "Please provide an absolute path to the JSON file."
-    exit 1
+    return 1
 fi
 
 # Check if file exists
 if [[ ! -f "$JSON_FILE" ]]; then
     echo "File does not exist at the specified path."
-    exit 1
+    return 1
 fi
 
 # Extract expiration timestamp from the JSON file
@@ -32,7 +31,7 @@ TIME_DIFFERENCE_HOURS=$(echo "($(date -d "$EXPIRATION" +%s) - $(date -d "$CURREN
 # Check if timestamp is over 12 hours old
 if (( TIME_DIFFERENCE_HOURS < -12 )); then
     echo "The credentials in the file are over 12 hours old. Please create a new file."
-    exit 1
+    return 1
 fi
 
 # Extract credentials and set as environment variables
