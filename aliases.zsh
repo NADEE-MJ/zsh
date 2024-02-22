@@ -102,7 +102,7 @@ alias mv="mv -i"
 alias clean-trash="unsafe-rm -r -f ~/.local/share/Trash/files"
 
 # better ls
-alias ls='exa -Fgh --group-directories-first  --icons --color always'
+alias ls='exa -F -gh --group-directories-first  --icons --color always'
 alias lsm='ls --sort=modified'
 alias la='ls -la'
 alias lam='la --soft=modified'
