@@ -1,5 +1,5 @@
 repos=(
-    paulmelnikow/zsh-startup-timer #uncomment to time startup
+    # paulmelnikow/zsh-startup-timer #uncomment to time startup
 
     # theme
     romkatv/powerlevel10k
