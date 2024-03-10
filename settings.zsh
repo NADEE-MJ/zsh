@@ -21,9 +21,6 @@ export YSU_IGNORED_ALIASES=("gl") # ignore in YSU
 # 38;5;x replace x with number from https://www.ditig.com/256-colors-cheat-sheet
 export LS_COLORS="*.zsh=38;5;14:*.jsx=38;5;9:*.js=38;5;9:*.php=38;5;82" # add filetype colors for exa
 
-#set p10k theme, put the file in the p10kthemes folder
-export CURRENT_P10K_THEME='main'
-
 # set path to only partially delete on ctrl+backspace
 export WORDCHARS='*?.[]~=&;!#$%^(){}<>'
 

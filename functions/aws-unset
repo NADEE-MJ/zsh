@@ -1,2 +1,0 @@
-unset AWS_DEFAULT_REGION && unset AWS_SECRET_ACCESS_KEY && unset AWS_ACCESS_KEY_ID && unset AWS_SESSION_TOKEN
-echo "removed all aws cli variables"

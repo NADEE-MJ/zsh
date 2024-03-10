@@ -1,11 +1,8 @@
 repos=(
-    # paulmelnikow/zsh-startup-timer #uncomment to time startup
+    paulmelnikow/zsh-startup-timer #uncomment to time startup
 
     # theme
     romkatv/powerlevel10k
-
-    # allows different function declaration style
-    mattmc3/zfunctions
 
     # tools
     MichaelAquilina/zsh-you-should-use

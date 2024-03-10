@@ -20,7 +20,6 @@ curl -L https://raw.github.com/NADEE-MJ/zsh/main/install.py --output install.py 
 | -----------------------------------------: | :------------------------------------------------ | :--------------------: |
 |             paulmelnikow/zsh-startup-timer | Times how long it takes for the prompt to startup |                        |
 |                      romkatv/powerlevel10k | this is the prompt                                |                        |
-|                         mattmc3/zfunctions | allows for different function setup               |                        |
 |         MichaelAquilina/zsh-you-should-use | reminds you of aliases                            |                        |
 |                               zshzoo/cd-ls | auto ls/exa on cd                                 |                        |
 |                            xvoland/Extract | better extract tool                               |           x            |

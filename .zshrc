@@ -18,6 +18,7 @@ source "$ZSHDIR/bindings.zsh"
 source "$ZSHDIR/plugins.zsh"
 source "$ZSHDIR/aliases.zsh"
 source "$ZSHDIR/settings.zsh"
+source "$ZSHDIR/functions.zsh"
 
 if [[ -f $ZSHDIR/overrides.zsh ]]; then
     source "$ZSHDIR/overrides.zsh"
@@ -27,23 +28,12 @@ if [[ ! -d "~/.local/share/Trash/files" ]]; then
   mkdir ~/.local/share/Trash/files
 fi
 
-#update zsh plugins and load
-if ($UPDATE_PLUGINS) then
-    zsh-unplugged-update
-fi
-
 plugin-load $repos
 
-# update git completions
-/bin/rm -f $ZSHDIR/plugins-custom/git-completion.bash
-/bin/rm -f $ZSHDIR/plugins-custom/_git
-
+# initialize git completions
 if [[ ! -d $ZSHDIR/plugins-custom ]]; then
-  mkdir $ZSHDIR/plugins-custom
+  git-update-completion
 fi
-
-cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git-completion.bash
-cp $ZSHDIR/plugins/git-completion/git-completion.zsh $ZSHDIR/plugins-custom/_git
 
 zstyle ':completion:*:*:git:*' menu select script ~/.config/zsh/plugins-custom/git-completion.bash
 
@@ -51,19 +41,12 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # allows for case i
 fpath=($ZSHDIR/plugins-custom $fpath)
 autoload -Uz compinit && compinit
 
-# initialize powerlevel10k theme
-THEMEFILE="$ZSHDIR/p10kthemes/$CURRENT_P10K_THEME.zsh"
-
-if [[ ! -f $THEMEFILE ]] then
-    echo "that theme does not exist"
-else
-    P10K_FILE="$ZSHDIR/.p10k.zsh"
-    if [[ -f $P10K_FILE ]] then
-        rm -f $P10K_FILE
-    fi
-    cat "$THEMEFILE" >> $ZSHDIR/.p10k.zsh
+# initialize powerlevel10k
+THEMEFILE="$ZSHDIR/p10kthemes/main.zsh"
+THEMEFILE_DESTINATION="$ZSHDIR/.p10k.zsh"
+if [[ ! -f $THEMEFILE_DESTINATION ]] then
+    cat "$THEMEFILE" >> $THEMEFILE_DESTINATION
 fi
-
 source ~/.p10k.zsh
 
 # so that cowsay and other games work
@@ -72,4 +55,4 @@ export PATH="$PATH:/usr/games/"
 # initialize zoxide
 eval "$(zoxide init zsh)"
 
-
+printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
