@@ -18,7 +18,7 @@ alias tib="tig blame -C"
 #commands
 alias gco="git checkout"
 alias gcb="git checkout -b"
-alias gl="git pull"
+alias gl="git pull --rebase"
 alias gp="git push"
 alias gst="git status"
 alias gs="git stash -u"
@@ -77,7 +77,7 @@ alias ezpz="zsh-pull && exec zsh"
 alias x=extract
 
 # network
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+# alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias iplocal="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 # fix typos
