@@ -172,7 +172,7 @@ alias nrda="nr docker-attach"
 alias nci="npm ci --legacy-peer-deps"
 alias prep="nr prep"
 alias ntp="nr test:python"
-alias ntpf="nr test:python  -- --f"
+alias ntpf="nr test:python  -- -f"
 
 #Fun
 alias prepl="prep | lolcat"
