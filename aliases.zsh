@@ -225,3 +225,21 @@ alias copilot='gh copilot explain'
 alias shellq='gh copilot suggest -t shell'
 alias gitq='gh copilot suggest -t git'
 alias ghq='gh copilot suggest -t gh'
+
+#?###############################################
+#?CI Playground
+#?###############################################
+alias pr='poetry run'
+alias prs='pr ssm'
+alias prse='prs ec2'
+alias prsec='prse connect'
+alias prsel='prse list-instances'
+alias prsels='prse list-sessions'
+alias presc='prse close-current-user-sessions'
+
+alias prss='prs sftp'
+alias prssc='prss create-user'
+alias prsscr='prss create-user-rdp'
+alias prsss='prss switch-user-to-rdp'
+alias prssd='prss delete-user'
+alias prssp='prss change-password'
