@@ -114,6 +114,8 @@ alias lt='exa --tree --level=2 --group-directories-first  --icons'
 # better rg defaults
 alias rg="rg -i --no-ignore --hidden --no-ignore-dot"
 
+alias cat='bat'
+
 #?###############################################
 #?vs code
 #?###############################################
