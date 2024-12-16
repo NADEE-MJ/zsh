@@ -13,6 +13,8 @@ setopt autocd menucomplete nomatch
 
 unsetopt BEEP
 
+unset zle_bracketed_paste
+
 zle_highlight=('paste:none') #remove paste highlighting
 
 export YSU_HARDCORE=0 # to force usage of aliases set to 1
