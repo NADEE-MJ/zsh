@@ -221,6 +221,14 @@ alias prta='pr test all'
 alias prtf='pr test filter'
 
 #?###############################################
+#?Github Copilot Commands
+#?###############################################
+alias copilot='gh copilot explain'
+alias shellq='gh copilot suggest -t shell'
+alias gitq='gh copilot suggest -t git'
+alias ghq='gh copilot suggest -t gh'
+
+#?###############################################
 #?CI Playground
 #?###############################################
 alias pr='poetry run'
