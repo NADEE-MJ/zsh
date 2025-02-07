@@ -54,5 +54,3 @@ export PATH="$PATH:/usr/games/"
 
 # initialize zoxide
 eval "$(zoxide init --cmd cd zsh)"
-
-printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
