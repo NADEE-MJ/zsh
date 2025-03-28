@@ -28,6 +28,12 @@ elif args.distro == "ubuntu20.04":
         f"sudo apt install bat -y && {exa_install} && {zoxide_install}"
     )
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
+elif args.distro == "ubuntu24.04":
+    update_packages = "sudo apt update && sudo apt upgrade -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
+    install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
+    install_extra_packages = "sudo apt install bat eza zoxide -y"
+    default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "arch":
     update_packages = "sudo pacman -Syyu --noconfirm"
     install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf jq bc --noconfirm"
