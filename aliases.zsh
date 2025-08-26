@@ -33,6 +33,7 @@ alias gb="git branch"
 alias gd="git diff"
 alias grst="git restore"
 alias gcp="git cherry-pick"
+alias grph="git rev-parse HEAD"
 
 #CI specific
 alias gri="git rebase integration"
