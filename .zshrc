@@ -54,3 +54,4 @@ export PATH="$PATH:/usr/games/"
 
 # initialize zoxide
 eval "$(zoxide init --cmd cd zsh)"
+alias claude="/home/nadeem/.claude/local/claude"
