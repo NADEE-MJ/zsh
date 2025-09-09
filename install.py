@@ -16,7 +16,7 @@ if args.distro == "debian12":
     update_packages = "sudo apt update && sudo apt upgrade -y"
     install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
-    install_extra_packages = "sudo apt install bat exa zoxide -y"
+    install_extra_packages = "sudo apt install bat eza zoxide -y"
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "ubuntu20.04":
     update_packages = "sudo apt update && sudo apt upgrade -y"
