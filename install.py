@@ -12,7 +12,7 @@ parser.add_argument("distro", type=str, help=distro_help)
 args = parser.parse_args()
 
 default_overrides = None
-if args.distro == "debian12":
+if args.distro == "debian13":
     update_packages = "sudo apt update && sudo apt upgrade -y"
     install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
