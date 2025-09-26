@@ -143,17 +143,15 @@ alias vscde="code --disable-extensions"
 alias ci="composer install"
 alias ni="npm install"
 
-#easy access to formatting tools
-alias js-f=js-format
-alias php-f=php-format
+alias laravel="[[ ! "$PWD" =~ ci2portal/laravel ]] && cd ci2portal/laravel || echo 'Already in Laravel directory' "
+alias frontend="[[ ! "$PWD" =~ ci2portal/frontend ]] && cd ci2portal/frontend || echo 'Already in Frontend directory' "
+alias root="[[ "$(basename "$PWD")" != "ci2portal" ]] && cd ci2portal || echo 'Already in root directory' "
+alias sst="[[ ! "$PWD" =~ ci2portal/sst ]] && cd ci2portal/sst || echo 'Already in sst directory' "
 
 #laravel commands
-alias pa='php artisan'
+alias pa='laravel && php artisan'
 alias paa='pa about'
-alias worker="pa queue:work --timeout=3600 --queue=input_records,input_images,output_records,output_images,notifications,default,pusher,output_records_and_images,high,low"
-alias pah="pa horizon"
-alias pahs="pa horizon:status"
-alias pahc="pa horizon:clear --queues"
+alias worker="pa queue:work --timeout=3600 --queue=notifications,default,pusher"
 alias pamfs="pa migrate:fresh --seed"
 alias pamf="pa migrate:fresh"
 alias pam="pa migrate"
@@ -168,19 +166,13 @@ alias pasr="pa schedule:run"
 
 #js commands
 alias nr="npm run"
-alias nrp="nr prod"
-alias nerd="nr dev"
-alias nrw="nr watch"
-alias nrda="nr docker-attach"
-alias nci="npm ci --legacy-peer-deps"
-alias prep="nr prep"
-alias ntp="nr test:python"
-alias ntpf="nr test:python  -- -f"
-
-#Fun
-alias prepl="prep | lolcat"
-alias narwhal="nr watch | lolcat"
-alias flood='php artisan migrate:fresh --seed'
+alias build="frontend && nr build && cd -"
+alias nrda="root && nr docker-attach"
+alias nci="root && npm ci"
+alias prep="root && nr prep"
+alias ntp="sst && nr test:python"
+alias ntpf="sst && nr test:python  -- -f"
+alias cypress="root && nr cypress-headless"
 
 #?###############################################
 #?Other
