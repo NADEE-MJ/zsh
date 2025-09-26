@@ -166,6 +166,7 @@ alias pasr="pa schedule:run"
 
 #js commands
 alias nr="npm run"
+alias nerd="sst && nr dev -- --stage nadeem"
 alias build="frontend && nr build && cd -"
 alias nrda="root && nr docker-attach"
 alias nci="root && npm ci"
