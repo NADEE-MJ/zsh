@@ -30,7 +30,7 @@ elif args.distro == "ubuntu20.04":
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
 elif args.distro == "ubuntu24.04":
     update_packages = "sudo apt update && sudo apt upgrade -y"
-    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc -y"
+    install_packages = "sudo apt install git micro curl python3 python-is-python3 python3-pip zsh ripgrep net-tools tig fzf jq bc-y"
     install_fun_packages = "sudo apt install cowsay figlet lolcat -y"
     install_extra_packages = "sudo apt install bat eza zoxide -y"
     default_overrides = f"touch {HOME}/.config/zsh/overrides.zsh && printf 'alias bat=batcat\nexport PATH=$PATH:~/.local/bin\n' > {HOME}/.config/zsh/overrides.zsh"
@@ -59,6 +59,20 @@ with open(f"{HOME}/.bashrc", "r") as file:
     if "zsh" not in content:
         os.system(f'echo "zsh" >> {HOME}/.bashrc')
 
+# install starship prompt
+os.system("curl -sS https://starship.rs/install.sh | sh -s --yes")
+
+# install nvm (Node Version Manager) and latest Node.js
+print("Installing NVM and latest Node.js...")
+nvm_install_command = (
+    "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash"
+)
+os.system(nvm_install_command)
+
+# Source nvm and install latest Node.js
+node_install_command = f'export NVM_DIR="{HOME}/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install node && nvm use node && nvm alias default node'
+os.system(f"bash -c '{node_install_command}'")
+
 # clone zsh repo to ~/.config/zsh
 if os.path.exists(f"{HOME}/.config/zsh"):
     os.system(f"sudo rm -rf {HOME}/.config/zsh/")
@@ -69,9 +83,6 @@ os.system(f"git clone --depth 1 https://github.com/NADEE-MJ/zsh.git {HOME}/.conf
 if os.path.exists(f"{HOME}/.zshrc"):
     os.system(f"sudo rm -f {HOME}/.zshrc")
 os.system(f"ln -s {HOME}/.config/zsh/.zshrc {HOME}/.zshrc")
-if os.path.exists(f"{HOME}/.p10k.zsh"):
-    os.system(f"sudo rm -f {HOME}/.p10k.zsh")
-os.system(f"ln -s {HOME}/.config/zsh/.p10k.zsh {HOME}/.p10k.zsh")
 
 # add default overrides
 if default_overrides is not None:

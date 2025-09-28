@@ -1,11 +1,8 @@
 repos=(
     # paulmelnikow/zsh-startup-timer #uncomment to time startup
 
-    # theme
-    romkatv/powerlevel10k
-
     # tools
-    # MichaelAquilina/zsh-you-should-use
+    MichaelAquilina/zsh-you-should-use
     zshzoo/cd-ls
     xvoland/Extract
     zsh-users/zsh-history-substring-search

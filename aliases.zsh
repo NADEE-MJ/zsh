@@ -244,3 +244,5 @@ alias cisscr='ciss create-user-rdp'
 alias cisss='ciss switch-user-to-rdp'
 alias cissd='ciss delete-user'
 alias cissp='ciss change-password'
+
+alias claude="/home/nadeem/.claude/local/claude"
