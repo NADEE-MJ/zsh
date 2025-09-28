@@ -1,5 +1,4 @@
 #package managers
-alias ci="composer install"
 alias ni="npm install"
 
 alias laravel="[[ ! \"$PWD\" =~ ci2portal/laravel ]] && cd ci2portal/laravel || echo 'Already in Laravel directory' "
