@@ -19,6 +19,7 @@ source "$ZSHDIR/plugins.zsh"
 source "$ZSHDIR/aliases.zsh"
 source "$ZSHDIR/settings.zsh"
 source "$ZSHDIR/functions.zsh"
+source "$ZSHDIR/paths.zsh"
 
 if [[ -f $ZSHDIR/overrides.zsh ]]; then
     source "$ZSHDIR/overrides.zsh"
