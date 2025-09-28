@@ -72,10 +72,16 @@ git-config-initial() {
 }
 
 git-update-completion() {
+    # Check if git completion files already exist
+    if [[ -f $ZSHDIR/plugins-custom/_git ]] && [[ -f $ZSHDIR/plugins-custom/git-completion.bash ]]; then
+        echo "git completion files already exist, skipping update"
+        return
+    fi
+
     /bin/rm -f $ZSHDIR/plugins-custom/_git
     /bin/rm -f $ZSHDIR/plugins-custom/git-completion.bash
 
-    mkdir $ZSHDIR/plugins-custom
+    mkdir -p $ZSHDIR/plugins-custom
 
     cp $ZSHDIR/plugins/git-completion/git-completion.bash $ZSHDIR/plugins-custom/git-completion.bash
     cp $ZSHDIR/plugins/git-completion/git-completion.zsh $ZSHDIR/plugins-custom/_git

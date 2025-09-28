@@ -1,8 +1,3 @@
-# # Enable Powerlevel10k instant prompt.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 # plugin storage
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 
@@ -15,11 +10,20 @@ ZSHDIR="$HOME/.config/zsh"
 
 source "$ZSHDIR/bindings.zsh"
 source "$ZSHDIR/plugins.zsh"
-source "$ZSHDIR/aliases.zsh"
 source "$ZSHDIR/settings.zsh"
 source "$ZSHDIR/functions.zsh"
 source "$ZSHDIR/paths.zsh"
 source "$ZSHDIR/nvm.zsh"
+
+ALIASES_DIR="$ZSHDIR/aliases"
+
+for alias_file in "$ALIASES_DIR"/*.zsh; do
+    if [[ -r "$alias_file" ]]; then
+        source "$alias_file"
+    fi
+done
+
+unset alias_file ALIASES_DIR
 
 if [[ -f $ZSHDIR/overrides.zsh ]]; then
     source "$ZSHDIR/overrides.zsh"
@@ -37,18 +41,10 @@ if [[ ! -d $ZSHDIR/plugins-custom ]]; then
 fi
 
 zstyle ':completion:*:*:git:*' menu select script ~/.config/zsh/plugins-custom/git-completion.bash
-
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # allows for case insensitive completion
+
 fpath=($ZSHDIR/plugins-custom $ZSHDIR/custom-completions $fpath)
 autoload -Uz compinit && compinit
-
-# # initialize powerlevel10k
-# THEMEFILE="$ZSHDIR/p10kthemes/main.zsh"
-# THEMEFILE_DESTINATION="$ZSHDIR/.p10k.zsh"
-# if [[ ! -f $THEMEFILE_DESTINATION ]] then
-#     cat "$THEMEFILE" >> $THEMEFILE_DESTINATION
-# fi
-# source ~/.p10k.zsh
 
 # so that cowsay and other games work
 export PATH="$PATH:/usr/games/"
@@ -57,4 +53,3 @@ export PATH="$PATH:/usr/games/"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 
-# fpath+=~/.zfunc; autoload -Uz compinit; compinit
