@@ -110,3 +110,19 @@ zsh-update() {
     zsh-update-plugins
     git-update-completion
 }
+
+go-to-folder() {
+    if [[ ! "$PWD" =~ $1 ]]; then
+        cd $1
+    else
+        echo "Already in $1 directory"
+    fi
+}
+
+go-to-root-folder() {
+    if [[ "$(basename "$PWD")" != "$1" ]]; then
+        cd $1
+    else
+        echo "Already in root directory"
+    fi
+}

@@ -1,10 +1,10 @@
 #package managers
 alias ni="npm install"
 
-alias laravel="[[ ! \"$PWD\" =~ ci2portal/laravel ]] && cd ci2portal/laravel || echo 'Already in Laravel directory' "
-alias frontend="[[ ! \"$PWD\" =~ ci2portal/frontend ]] && cd ci2portal/frontend || echo 'Already in Frontend directory' "
-alias root="[[ \"$(basename \"$PWD\")\" != \"ci2portal\" ]] && cd ci2portal || echo 'Already in root directory' "
-alias sst="[[ ! \"$PWD\" =~ ci2portal/sst ]] && cd ci2portal/sst || echo 'Already in sst directory' "
+alias laravel="go-to-folder ci2portal/laravel"
+alias frontend="go-to-folder ci2portal/frontend"
+alias root="go-to-root-folder ci2portal"
+alias sst="go-to-folder ci2portal/sst"
 
 #laravel commands
 alias pa='laravel && php artisan'
