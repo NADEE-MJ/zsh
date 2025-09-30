@@ -60,7 +60,7 @@ with open(f"{HOME}/.bashrc", "r") as file:
         os.system(f'echo "zsh" >> {HOME}/.bashrc')
 
 # install starship prompt
-os.system("curl -sS https://starship.rs/install.sh | sh -s --yes")
+os.system("curl -sS https://starship.rs/install.sh | sh -s")
 
 # install nvm (Node Version Manager) and latest Node.js
 print("Installing NVM and latest Node.js...")
