@@ -113,7 +113,13 @@ zsh-update() {
 
 go-to-folder() {
     if [[ ! "$PWD" =~ $1 ]]; then
-        cd $1
+        if [[ -d ~/$1 ]]; then
+            cd ~/$1
+        elif [[ -d ~/Documents/$1 ]]; then
+            cd ~/Documents/$1
+        else
+            echo "$1 directory does not exist"
+        fi
     else
         echo "Already in $1 directory"
     fi
@@ -121,7 +127,14 @@ go-to-folder() {
 
 go-to-root-folder() {
     if [[ "$(basename "$PWD")" != "$1" ]]; then
-        cd $1
+        if [[ -d ~/$1 ]]; then
+            cd ~/$1
+        elif [[ -d ~/Documents/$1 ]]; then
+            cd ~/Documents/$1
+        else
+            echo "$1 directory does not exist"
+            return
+        fi
     else
         echo "Already in root directory"
     fi
