@@ -25,7 +25,7 @@ alias pasr="pa schedule:run"
 #js commands
 alias nr="npm run"
 alias login="root && nr aws-login:clear"
-alias start="root && nr start-with-volumne"
+alias start="root && nr start-with-volume"
 alias stop="root && nr stop"
 alias nerd="sst && nr dev -- --stage nadeem"
 alias build="frontend && nr build && cd -"
