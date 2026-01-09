@@ -50,9 +50,11 @@ autoload -Uz compinit && compinit
 export PATH="$PATH:/usr/games/"
 
 # initialize zoxide
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd z zsh)"
 eval "$(starship init zsh)"
 
 # turn on for vscode shell integration
 # [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
+
+source /home/nadeem/.config/broot/launcher/bash/br
