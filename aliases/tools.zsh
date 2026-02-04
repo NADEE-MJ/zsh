@@ -40,5 +40,3 @@ alias lt='exa --tree --level=2 --group-directories-first  --icons'
 alias rg="rg -i --no-ignore --hidden --no-ignore-dot"
 
 alias cat='bat'
-
-alias claude="/home/nadeem/.claude/local/claude"
