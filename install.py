@@ -81,14 +81,23 @@ os.system("curl -sS https://starship.rs/install.sh | sh -s")
 
 # install nvm (Node Version Manager) and latest Node.js
 print("Installing NVM and latest Node.js...")
-nvm_install_command = (
-    "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash"
-)
-os.system(nvm_install_command)
-
-# Source nvm and install latest Node.js
-node_install_command = f'export NVM_DIR="{HOME}/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install node && nvm use node && nvm alias default node'
-os.system(f"bash -c '{node_install_command}'")
+if args.distro == "macos":
+    # Install nvm via Homebrew on macOS
+    os.system("brew install nvm")
+    # Create nvm directory
+    os.system(f"mkdir -p {HOME}/.nvm")
+    # Source nvm and install latest Node.js
+    node_install_command = f'export NVM_DIR="{HOME}/.nvm" && [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh" && nvm install node && nvm use node && nvm alias default node'
+    os.system(f"zsh -c '{node_install_command}'")
+else:
+    # Install nvm via curl on Linux
+    nvm_install_command = (
+        "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash"
+    )
+    os.system(nvm_install_command)
+    # Source nvm and install latest Node.js
+    node_install_command = f'export NVM_DIR="{HOME}/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install node && nvm use node && nvm alias default node'
+    os.system(f"bash -c '{node_install_command}'")
 
 # clone zsh repo to ~/.config/zsh
 if os.path.exists(f"{HOME}/.config/zsh"):
