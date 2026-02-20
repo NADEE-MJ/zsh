@@ -3,7 +3,7 @@ import os
 
 desc = "Install zsh config from NADEE-MJ/zsh"
 distro_help = (
-    "The linux distribution to install zsh on, options: [debian12, ubuntu20.04, arch]"
+    "The distribution to install zsh on, options: [debian13, ubuntu20.04, ubuntu24.04, arch, macos]"
 )
 HOME = os.path.expanduser("~")
 
@@ -39,6 +39,21 @@ elif args.distro == "arch":
     install_packages = "sudo pacman -S git curl micro python python-pip zsh ripgrep net-tools tig fzf jq bc --noconfirm"
     install_fun_packages = "sudo pacman -S cowsay figlet lolcat --noconfirm"
     install_extra_packages = "sudo pacman -S bat exa zoxide --noconfirm"
+elif args.distro == "macos":
+    # Check if Homebrew is installed, if not install it
+    homebrew_check = "which brew > /dev/null 2>&1"
+    if os.system(homebrew_check) != 0:
+        print("Homebrew not found. Installing Homebrew...")
+        os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+        # Add Homebrew to PATH for Apple Silicon Macs
+        brew_path_check = f'grep -q "/opt/homebrew/bin/brew" {HOME}/.zprofile 2>/dev/null'
+        if os.system(brew_path_check) != 0:
+            os.system(f'echo \'eval "$(/opt/homebrew/bin/brew shellenv)"\' >> {HOME}/.zprofile')
+            os.system(f'eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true')
+    update_packages = "brew update && brew upgrade"
+    install_packages = "brew install git micro curl python3 zsh ripgrep tig fzf jq bc"
+    install_fun_packages = "brew install cowsay figlet lolcat"
+    install_extra_packages = "brew install bat eza zoxide"
 else:
     print("Not a valid distro option!\n")
     parser.print_help()
@@ -50,14 +65,16 @@ os.system(install_packages)
 os.system(install_fun_packages)
 os.system(install_extra_packages)
 
-# add zsh to ~/.bashrc file
+# add zsh to shell config file for Linux distros
+# macOS uses zsh as default shell since Catalina, so this step is skipped
 # you can remove this and change default shell for user to zsh however this has been more
 # consistent in terms of usability. Otherwise you would have to copy all of the bashrc
 # contents over to the zshrc. This is a lot simpler
-with open(f"{HOME}/.bashrc", "r") as file:
-    content = file.read()
-    if "zsh" not in content:
-        os.system(f'echo "zsh" >> {HOME}/.bashrc')
+if args.distro != "macos":
+    with open(f"{HOME}/.bashrc", "r") as file:
+        content = file.read()
+        if "zsh" not in content:
+            os.system(f'echo "zsh" >> {HOME}/.bashrc')
 
 # install starship prompt
 os.system("curl -sS https://starship.rs/install.sh | sh -s")
