@@ -57,4 +57,5 @@ eval "$(starship init zsh)"
 # [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
 
-source /home/nadeem/.config/broot/launcher/bash/br
+source ~/.config/broot/launcher/bash/br
+
