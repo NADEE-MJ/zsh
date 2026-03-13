@@ -56,6 +56,4 @@ eval "$(starship init zsh)"
 # turn on for vscode shell integration
 # [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
-
 source ~/.config/broot/launcher/bash/br
-
