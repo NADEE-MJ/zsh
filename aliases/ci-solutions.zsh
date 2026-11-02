@@ -5,7 +5,7 @@ alias laravel="go-to-folder ci2portal/laravel"
 alias frontend="go-to-folder ci2portal/frontend"
 alias root="go-to-root-folder ci2portal"
 alias sst="go-to-folder ci2portal/sst"
-alias ndk="go-to-folder ci"
+alias ndkf="go-to-folder ci"
 alias dash="poetry run python dashboard.py"
 
 #laravel commands
