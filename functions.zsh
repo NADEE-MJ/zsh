@@ -115,6 +115,8 @@ go-to-folder() {
     if [[ ! "$PWD" =~ $1 ]]; then
         if [[ -d ~/$1 ]]; then
             cd ~/$1
+        elif [[ -d ~/code/$1 ]]; then
+            cd ~/code/$1
         elif [[ -d ~/Documents/$1 ]]; then
             cd ~/Documents/$1
         else
@@ -129,6 +131,8 @@ go-to-root-folder() {
     if [[ "$(basename "$PWD")" != "$1" ]]; then
         if [[ -d ~/$1 ]]; then
             cd ~/$1
+        elif [[ -d ~/code/$1 ]]; then
+            cd ~/code/$1
         elif [[ -d ~/Documents/$1 ]]; then
             cd ~/Documents/$1
         else
