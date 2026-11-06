@@ -144,10 +144,11 @@ go-to-root-folder() {
     fi
 }
 # keep Mac awake: `awake` (until stopped) or `awake 4` (hours); `unawake` to stop
+# runs under launchd so it survives closing the terminal/iTerm session
 awake() {
-    pkill caffeinate 2>/dev/null
-    nohup caffeinate -dims ${1:+-t $(( $1 * 3600 ))} >/dev/null 2>&1 & disown
-    echo "awake${1:+ for $1h}"
+    launchctl remove awake 2>/dev/null
+    launchctl submit -l awake -- /usr/bin/caffeinate -dims ${1:+-t $(( $1 * 3600 ))} \
+        && echo "awake${1:+ for $1h}"
 }
 
-unawake() { pkill caffeinate && echo "stopped"; }
+unawake() { launchctl remove awake 2>/dev/null && echo "stopped" || echo "not running"; }
