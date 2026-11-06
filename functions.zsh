@@ -143,3 +143,11 @@ go-to-root-folder() {
         echo "Already in root directory"
     fi
 }
+# keep Mac awake: `awake` (until stopped) or `awake 4` (hours); `unawake` to stop
+awake() {
+    pkill caffeinate 2>/dev/null
+    nohup caffeinate -dims ${1:+-t $(( $1 * 3600 ))} >/dev/null 2>&1 & disown
+    echo "awake${1:+ for $1h}"
+}
+
+unawake() { pkill caffeinate && echo "stopped"; }
